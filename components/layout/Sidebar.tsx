@@ -1,10 +1,12 @@
-import {BsHouseFill, BsBellFill} from "react-icons/bs"
-import {FaUser} from "react-icons/fa"
+import SideBarLogo from "./SideBarLogo";
+import SideBarItem from "./SideBarItem";
+import SideBarTweetButton from "./SideBarTweetButton";
+import { BsHouseFill, BsBellFill } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
+import {BiLogOut} from "react-icons/bi"
 
 
-
-
-const SideBar = () => {
+const SideBar = () => { 
     const items = [
         {
             label: "Home",
@@ -24,7 +26,23 @@ const SideBar = () => {
     ]
 
     return (
-      <div></div>
+      <div className="col-span-1 h-full pr-4 md:pr-6">
+        <div className="flex flex-col items-end">
+          <div className="space-y-2 lg:w-[230px]">
+            <SideBarLogo/>
+            {items.map((item) => (
+              <SideBarItem 
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                icon={item.icon}
+              />
+            ))}    
+            <SideBarItem onClick={() => {}} icon={BiLogOut} label="Logout"/>
+            <SideBarTweetButton/>
+          </div>
+        </div>
+      </div>
     );
 }
 
